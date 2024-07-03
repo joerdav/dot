@@ -1,0 +1,91 @@
+#! /usr/bin/zsh
+
+# useful file/directory creation
+mk() {
+    mkdir -p "$@"
+}
+
+mkcd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+mkfile() {
+    mkdir -p $(dirname "$1") && touch "$1"
+}
+
+extract() {
+    tar -xvf "$1"
+}
+
+compress() {
+    tar -czvf "$1" "$2"
+}
+
+cp_token() {
+  token=$(kubectl get --namespace consul secrets/consul-bootstrap-acl-token --template={{.data.token}} 2> /dev/null || true)
+  if [ -z "$token" ]; then
+    token=$(kubectl get --namespace consul secrets/consul-consul-bootstrap-acl-token --template={{.data.token}})
+  fi
+  echo $token | base64 -d | xsel --clipboard 
+}
+
+connect_logs() {
+  kl -n consul $(kgp -n consul --no-headers -o custom-columns=":metadata.name" | rg "consul-connect" | head -n 1) $1
+}
+
+gotest() {
+    if [ -z "$1" ]; then
+        go test ./... -v -json -cover | gotestfmt -hide empty-packages
+    else
+        go test "$@" -v -json -cover | gotestfmt -hide empty-packages
+    fi
+}
+
+# Show 256 TERM colors
+colors() {
+  local X=$(tput op)
+  local Y=$(printf %$((COLUMNS-6))s)
+  for i in {0..256}; do
+  o=00$i;
+  echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
+  done
+}
+
+# Add to path
+prepend-path() {
+  [ -d $1 ] && PATH="$1:$PATH"
+}
+
+# only run black on python files
+gblack() {
+    git diff --name-only $(git branch --show-current) $(git merge-base $(git branch --show-current) master) | xargs -I{} find {} -name "*.py" -exec black -l 120 {} \;
+}
+
+# print all aliases
+aliases() {
+    bat $HOME/.dotfiles/system/.alias
+}
+
+create_venv() {
+    python -m venv .
+    echo "layout python" >> .envrc
+    direnv allow
+}
+
+newgke() {
+    export PROJECT_ID=`gcloud config get-value project` && \
+    export M_TYPE=n1-standard-2 && \
+    export ZONE=us-west2-a && \
+    export CLUSTER_NAME=${PROJECT_ID}-${RANDOM} && \
+    gcloud services enable container.googleapis.com && \
+    gcloud container clusters create $CLUSTER_NAME \
+    --cluster-version latest \
+    --machine-type=$M_TYPE \
+    --num-nodes 4 \
+    --zone $ZONE \
+    --project $PROJECT_ID
+}
+
+kill_cpk() {
+  kill $(ps aux | grep "[c]loud-provider-kind" | awk -F ' ' '{print $2}')
+}

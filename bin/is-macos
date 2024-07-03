@@ -1,0 +1,7 @@
+unameOut=$(uname -s)
+
+if [[ "${unameOut}" == "Darwin" ]]; then
+    echo 0
+else
+    echo 1
+fi
