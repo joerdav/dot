@@ -20,6 +20,7 @@ apps=(
   gpg2
   jq
   neovim
+  ripgrep
   the_silver_searcher
   tmux
   tree
