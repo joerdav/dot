@@ -43,11 +43,11 @@ ln -sfv "$DOTFILES_DIR/lang_defaults/.default-golang-pkgs" "$HOME"
 # Package managers & pagkages
 . "$DOTFILES_DIR/install/packages.sh"
 . "$DOTFILES_DIR/install/asdf_install.sh"
-if [ ! -z "$NEWKEY" ]; then
-    . "$DOTFILES_DIR/install/autokey-github.sh"
-else
-    . "$DOTFILES_DIR/install/pull-ssh-keys.sh"
-fi
+#if [ ! -z "$NEWKEY" ]; then
+    #. "$DOTFILES_DIR/install/autokey-github.sh"
+#else
+    #. "$DOTFILES_DIR/install/pull-ssh-keys.sh"
+#fi
 
 #ln -sfv "$DOTFILES_DIR/git/.gitconfig" "$HOME"
 #ln -sfv "$DOTFILES_DIR/git/.githelpers" "$HOME"
