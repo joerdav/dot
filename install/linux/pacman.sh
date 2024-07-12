@@ -6,7 +6,7 @@ function install {
 }
 
 
-install atiun
+install atuin
 install cmake
 install coreutils
 install fzf
