@@ -14,7 +14,6 @@ install github-cli
 install git
 # https://github.com/tj/git-extras/blob/master/Commands.md
 install grep
-install gpg2
 install jq
 install neovim
 install ripgrep
