@@ -11,6 +11,9 @@ local config = {
 	}),
 	enable_tab_bar = false,
 	color_scheme = "Kanagawa (Gogh)",
+	colors = {
+		background = "black",
+	},
 }
 
 return config

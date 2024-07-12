@@ -15,6 +15,8 @@ install github-cli
 install git
 # https://github.com/tj/git-extras/blob/master/Commands.md
 install grep
+install i3
+install i3status
 install jq
 install make
 install neovim
