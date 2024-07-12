@@ -1,13 +1,8 @@
 set -eEuo pipefail
 
 function install {
-
-    if [[ $(which "$1" &>/dev/null) -ne 0 ]]; then
-        echo "Installing: ${1}..."
-        sudo pacman -Syu --noconfirm "$1"
-    else
-        echo "Already installed: ${1}"
-    fi
+	echo "Installing: ${1}..."
+	sudo pacman -Syu --noconfirm "$1"
 }
 
 
