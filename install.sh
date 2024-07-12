@@ -34,6 +34,9 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Bunch of symlinks
 ln -sfv "$DOTFILES_DIR/.config/zsh/.zshrc" "$HOME"
+ln -sfv "$DOTFILES_DIR/.config/.Xresources" "$HOME"
+ln -sfv "$DOTFILES_DIR/.config/.profile" "$HOME"
+ln -sfv "$DOTFILES_DIR/.config/zsh/.zshrc" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/tmux/.tmux.conf" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/nvim" "$HOME/.config"
 ln -sfv "$DOTFILES_DIR/.config/wezterm/.wezterm.lua" "$HOME"
