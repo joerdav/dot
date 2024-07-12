@@ -22,7 +22,6 @@ install tmux
 install tree
 install wget
 install firefox
-install google-chrome
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 install spotify
 install code
