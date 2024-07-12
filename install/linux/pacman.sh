@@ -13,7 +13,6 @@ install fzf
 install github-cli
 install git
 # https://github.com/tj/git-extras/blob/master/Commands.md
-install git-extras
 install grep
 install gpg2
 install jq
