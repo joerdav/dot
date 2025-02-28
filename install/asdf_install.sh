@@ -9,15 +9,8 @@ else
     brew install asdf
 fi
 
-# Ruby
-asdf plugin-add ruby || true
-
-asdf install ruby 3.1.0
-
-asdf global ruby 3.1.0
-
 # Python
-asdf plugin-add python || true
+asdf plugin add python || true
 
 if [[ $(is-macos) == 1 ]]; then
     asdf install python 3.10.4
@@ -25,20 +18,20 @@ else
     env PYTHON_CONFIGURE_OPTS="--enable-framework" asdf install python 3.10.4
 fi
 
-asdf global python 3.10.4
+asdf set -u python 3.10.4
 # Golang
-asdf plugin-add golang
+asdf plugin add golang
 
-asdf install golang 1.20.2
+asdf install golang latest
 
-asdf global golang 1.20.2
+asdf set -u golang latest
 
 # nodejs
-asdf plugin-add nodejs
+asdf plugin add nodejs
 
 asdf install nodejs 18.5.0
 
-asdf global nodejs 18.5.0
+asdf set -u nodejs 18.5.0
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
