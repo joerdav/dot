@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -eEuo pipefail
 
@@ -33,14 +33,13 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 #if is-executable git -a -d "$DOTFILES_DIR/.git"; then git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master; fi
 
 # Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/.config/zsh/.zshrc" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/.Xresources" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/.profile" "$HOME"
-ln -sfv "$DOTFILES_DIR/.config/zsh/.zshrc" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/tmux/.tmux.conf" "$HOME"
 ln -sfv "$DOTFILES_DIR/.config/nvim" "$HOME/.config"
+ln -sfv "$DOTFILES_DIR/.config/fish" "$HOME/.config"
+ln -sfv "$DOTFILES_DIR/.config/ghostty" "$HOME/.config"
 ln -sfv "$DOTFILES_DIR/.config/i3" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/.config/wezterm/.wezterm.lua" "$HOME"
 ln -sfv "$DOTFILES_DIR/lang_defaults/.default_npm_packages" "$HOME"
 ln -sfv "$DOTFILES_DIR/lang_defaults/.default-golang-pkgs" "$HOME"
 
@@ -59,12 +58,3 @@ ln -sfv "$DOTFILES_DIR/lang_defaults/.default-golang-pkgs" "$HOME"
 # Install extra stuff
 
 PATH="$HOME/.cargo/bin:$PATH"
-
-echo "Installing zsh"
-
-. "$DOTFILES_DIR/install/zsh_install.sh"
-
-if test -f .zshrc.pre-oh-my-zsh; then
-    rm .zshrc
-    mv .zshrc.pre-oh-my-zsh .zshrc
-fi
