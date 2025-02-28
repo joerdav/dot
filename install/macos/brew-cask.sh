@@ -3,13 +3,14 @@ if ! is-macos -o ! is-executable brew; then
   return
 fi
 
-brew tap homebrew/cask
-brew tap homebrew/cask-fonts
 
 # Install packages
 apps=(
   bitwarden
   firefox
+  slack
+  keymapp
+  ghostty
   google-chrome
   rectangle
   # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)

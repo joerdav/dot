@@ -13,6 +13,7 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
+				rust = { "rustfmt", lsp_format = "fallback" },
 				lua = { "stylua" },
 				templ = { "templ" },
 				-- Conform will run multiple formatters sequentially
@@ -26,6 +27,8 @@ return {
 				css = { "prettierd" },
 				go = { "gofumpt", "goimports" },
 				json = { "jq" },
+				elixir = { "mix"  },
+				nix = { "nixpkgs_fmt" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable

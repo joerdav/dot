@@ -129,15 +129,16 @@ return {
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"htmx-lsp",
+				"elixir-ls",
+				"nixpkgs-fmt",
 				-- nil
 				"nil",
 				-- templ
 				"html",
 				"tailwindcss",
 				-- go
-				"golangci-lint",
-				"golangci_lint_ls",
-				"gopls",
+				--"golangci-lint",
+				--"gopls",
 				"shellcheck",
 				"gofumpt",
 				"golines",
@@ -194,7 +195,8 @@ return {
 				lsp.default_setup,
 				["templ"] = function()
 					require("lspconfig").templ.setup({
-						cmd = { "templ", "lsp", "-http=localhost:7474", "-log=/Users/joe.davidson/templ.log" },
+						cmd = { "templ", "lsp", "-http=localhost:7474", "-log=/Users/josephdavidson/templ.log" },
+						filetypes = { "templ", "go" }
 					})
 				end,
 				["html"] = function()
@@ -213,53 +215,53 @@ return {
 						init_options = { userLanguages = { templ = "html" } },
 					})
 				end,
-				["gopls"] = function()
-					require("lspconfig").gopls.setup({
-						on_init = function(client)
-							client.config.flags = {
-								allow_incremental_sync = false,
-							}
-						end,
-						cmd = { "gopls", "-remote=auto" },
-						settings = {
-							usePlaceholders = true,
-							gofumpt = true,
-							analyses = {
-								nilness = true,
-								unusedparams = true,
-								unusedwrite = true,
-								useany = true,
-							},
-							gopls = {
-								buildFlags = { "-tags=integration" },
-								codelenses = {
-									gc_details = true,
-									generate = true,
-									regenerate_cgo = true,
-									run_govulncheck = true,
-									test = true,
-									tidy = true,
-									upgrade_dependency = true,
-									vendor = true,
-								},
-							},
-							experimentalPostfixCompletions = true,
-							completeUnimported = true,
-							staticcheck = true,
-							directoryFilters = { "-.git", "-node_modules" },
-							semanticTokens = true,
-							hints = {
-								assignVariableTypes = true,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
-							},
-						},
-					})
-				end,
+				--["gopls"] = function()
+					--require("lspconfig").gopls.setup({
+						--on_init = function(client)
+							--client.config.flags = {
+								--allow_incremental_sync = false,
+							--}
+						--end,
+						--cmd = { "gopls", "-remote=auto" },
+						--settings = {
+							--usePlaceholders = true,
+							--gofumpt = true,
+							--analyses = {
+								--nilness = true,
+								--unusedparams = true,
+								--unusedwrite = true,
+								--useany = true,
+							--},
+							--gopls = {
+								--buildFlags = { "-tags=integration" },
+								--codelenses = {
+									--gc_details = true,
+									--generate = true,
+									--regenerate_cgo = true,
+									--run_govulncheck = true,
+									--test = true,
+									--tidy = true,
+									--upgrade_dependency = true,
+									--vendor = true,
+								--},
+							--},
+							--experimentalPostfixCompletions = true,
+							--completeUnimported = true,
+							--staticcheck = true,
+							--directoryFilters = { "-.git", "-node_modules" },
+							--semanticTokens = true,
+							--hints = {
+								--assignVariableTypes = true,
+								--compositeLiteralFields = true,
+								--compositeLiteralTypes = true,
+								--constantValues = true,
+								--functionTypeParameters = true,
+								--parameterNames = true,
+								--rangeVariableTypes = true,
+							--},
+						--},
+					--})
+				--end,
 				["lua_ls"] = function()
 					require("lspconfig").lua_ls.setup({
 						settings = {
@@ -291,12 +293,13 @@ return {
 			},
 		})
 		require("lspconfig").templ.setup({
+			filetypes = {"templ","go"},
 			cmd = {
 				"templ",
 				"lsp",
 				"-http=localhost:7474",
-				"-log=/Users/joe.davidson/templ.log",
-				"-goplsLog=/Users/joe.davidson/tgo.log",
+				"-log=/Users/josephdavidson/templ.log",
+				"-goplsLog=/Users/josephdavidson/tgo.log",
 				"-goplsRPCTrace",
 			},
 		})

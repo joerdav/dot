@@ -23,12 +23,6 @@ unsetopt PROMPT_SP
 zstyle ':vcs_info:git*' formats "[%b]"
 precmd() {
     vcs_info
-    if [ -n $vcs_info_msg_0_ ]; then
-    TICKET_RESULT=$(c -p)
-	    if [ -n "$TICKET_RESULT" ]; then
-		TICKET_RESULT="[$TICKET_RESULT]"
-	    fi
-    fi
 }
 PROMPT='[%?][%~% ]${vcs_info_msg_0_}${TICKET_RESULT}%B$%b '
 RPROMPT=''
@@ -41,6 +35,8 @@ ZSH_WEB_SEARCH_ENGINES=(
 source $ZSH/oh-my-zsh.sh
 
 bindkey -s ^f "tmux-sessionizer\n"
+
+eval "$(direnv hook zsh)"
 
 # User configuration
 DOTFILES_DIR="$HOME/.dotfiles"
@@ -61,7 +57,7 @@ else
     . $HOME/.asdf/asdf.sh
 fi
 
-complete -o nospace -C /Users/joe.davidson/go/bin/xc xc
+complete -o nospace -C $HOME/go/bin/xc xc
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/joe/.sdkman"
@@ -69,3 +65,5 @@ export SDKMAN_DIR="/home/joe/.sdkman"
 
 #zprof
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/josephdavidson/go/bin/xc xc

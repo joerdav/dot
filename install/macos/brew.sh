@@ -8,7 +8,7 @@ brew update
 brew upgrade
 
 apps=(
-  atiun
+  atuin
   cmake
   coreutils
   fzf
@@ -30,4 +30,3 @@ apps=(
 brew install "${apps[@]}"
 
 export DOTFILES_BREW_PREFIX_COREUTILS=$(brew --prefix coreutils)
-set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"

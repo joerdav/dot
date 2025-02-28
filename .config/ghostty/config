@@ -1,0 +1,11 @@
+font-family = "Monaspace Neon Medium"
+font-size = 12
+
+command = "zsh -c /opt/homebrew/bin/tmux"
+
+theme = "kanagawabones"
+background = #000000
+foreground = #ffffff
+
+palette = 0=#000000
+palette = 15=#ffffff

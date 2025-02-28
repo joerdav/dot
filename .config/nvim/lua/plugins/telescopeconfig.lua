@@ -1,16 +1,17 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
-		{ "joerdav/telescope-xc.nvim", dir = "~/src/joerdav/telescope-xc.nvim" },
+		{ "joerdav/telescope-xc.nvim" },
 		"nvim-lua/plenary.nvim",
 		"preservim/vimux",
 	},
 	config = function()
+		vim.api.nvim_set_keymap('n', '<Leader>ff', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', {noremap = true, silent = true}) 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set(
 			"n",
 			"<leader>sf",
-			builtin.find_files,
+			':lua require"telescope.builtin".find_files({ hidden = true })<CR>',
 			{ silent = true, noremap = true, desc = "[S]earch [F]iles" }
 		)
 		vim.keymap.set(

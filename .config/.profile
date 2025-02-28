@@ -1,1 +1,1 @@
-export GDK_SCALE=2
+eval "$(/opt/homebrew/bin/brew shellenv)"
