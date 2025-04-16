@@ -18,6 +18,7 @@ apps=(
   visual-studio-code
   vlc
   webpquicklook
+  google-cloud-sdk
 )
 
 brew install "${apps[@]}" --cask

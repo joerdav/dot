@@ -304,6 +304,7 @@ return {
 			},
 		})
 		require("lspconfig").gdscript.setup({})
+		require("lspconfig").cue.setup({})
 		lsp.setup()
 
 		vim.diagnostic.config({
