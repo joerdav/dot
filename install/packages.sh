@@ -4,7 +4,7 @@ function linux_install() {
     . /etc/os-release
     OS=$NAME
     LINUX_DIR="$DOTFILES_DIR/install/linux"
-    if [[ $OS == *"Manjaro"* ]]; then
+    if [[ $OS == *"Arch"* ]]; then
         . "$LINUX_DIR/pacman.sh"
     fi
     . "$LINUX_DIR/fonts.sh"

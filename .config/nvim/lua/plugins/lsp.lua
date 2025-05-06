@@ -195,7 +195,7 @@ return {
 				lsp.default_setup,
 				["templ"] = function()
 					require("lspconfig").templ.setup({
-						cmd = { "templ", "lsp", "-http=localhost:7474", "-log=/Users/josephdavidson/templ.log" },
+						cmd = { "templ", "lsp", "-no-preload", "-http=localhost:7474", "-log=/Users/josephdavidson/templ.log" },
 						filetypes = { "templ", "go" }
 					})
 				end,
@@ -215,53 +215,14 @@ return {
 						init_options = { userLanguages = { templ = "html" } },
 					})
 				end,
-				--["gopls"] = function()
-					--require("lspconfig").gopls.setup({
-						--on_init = function(client)
-							--client.config.flags = {
-								--allow_incremental_sync = false,
-							--}
-						--end,
-						--cmd = { "gopls", "-remote=auto" },
-						--settings = {
-							--usePlaceholders = true,
-							--gofumpt = true,
-							--analyses = {
-								--nilness = true,
-								--unusedparams = true,
-								--unusedwrite = true,
-								--useany = true,
-							--},
-							--gopls = {
-								--buildFlags = { "-tags=integration" },
-								--codelenses = {
-									--gc_details = true,
-									--generate = true,
-									--regenerate_cgo = true,
-									--run_govulncheck = true,
-									--test = true,
-									--tidy = true,
-									--upgrade_dependency = true,
-									--vendor = true,
-								--},
-							--},
-							--experimentalPostfixCompletions = true,
-							--completeUnimported = true,
-							--staticcheck = true,
-							--directoryFilters = { "-.git", "-node_modules" },
-							--semanticTokens = true,
-							--hints = {
-								--assignVariableTypes = true,
-								--compositeLiteralFields = true,
-								--compositeLiteralTypes = true,
-								--constantValues = true,
-								--functionTypeParameters = true,
-								--parameterNames = true,
-								--rangeVariableTypes = true,
-							--},
-						--},
-					--})
-				--end,
+				["gopls"] = function()
+					require("lspconfig").gopls.setup({
+						cmd = { "gopls", "-remote=:37374" },
+						filetypes = { "go" },
+						settings = {
+						},
+					})
+				end,
 				["lua_ls"] = function()
 					require("lspconfig").lua_ls.setup({
 						settings = {
@@ -295,12 +256,11 @@ return {
 		require("lspconfig").templ.setup({
 			filetypes = {"templ","go"},
 			cmd = {
-				"templ",
+				"/Users/josephdavidson/.asdf/installs/golang/1.24.0/packages/bin/templ",
 				"lsp",
-				"-http=localhost:7474",
+				"-gopls-remote=:37374",
 				"-log=/Users/josephdavidson/templ.log",
 				"-goplsLog=/Users/josephdavidson/tgo.log",
-				"-goplsRPCTrace",
 			},
 		})
 		require("lspconfig").gdscript.setup({})

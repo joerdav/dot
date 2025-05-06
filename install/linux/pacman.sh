@@ -13,14 +13,10 @@ install fzf
 install gcc
 install github-cli
 install git
-# https://github.com/tj/git-extras/blob/master/Commands.md
 install grep
-install i3
-install i3status
 install jq
 install make
 install neovim
-install ripgrep
 install the_silver_searcher
 install tmux
 install tree
@@ -28,6 +24,6 @@ install wget
 install firefox
 install code
 install vlc
-install wezterm
+install ghostty
 
 
