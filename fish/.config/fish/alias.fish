@@ -1,5 +1,6 @@
 alias v nvim
 alias vim nvim
+alias gvim="nvim --listen /tmp/godot.pipe"
 
 function review
     if not git status -s

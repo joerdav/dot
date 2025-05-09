@@ -18,8 +18,6 @@ return {
 	config = function()
 		local lsp = require("lsp-zero")
 
-		lsp.preset("recommended")
-
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local min_keyword_length = 5
@@ -58,16 +56,6 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "buffer", keyword_length = min_keyword_length },
 				{ name = "path", keyword_length = min_keyword_length },
-			},
-		})
-
-		lsp.set_preferences({
-			suggest_lsp_servers = false,
-			sign_icons = {
-				error = "E",
-				warn = "W",
-				hint = "H",
-				info = "I",
 			},
 		})
 
@@ -263,8 +251,8 @@ return {
 				"-goplsLog=/Users/josephdavidson/tgo.log",
 			},
 		})
-		require("lspconfig").gdscript.setup({})
 		require("lspconfig").cue.setup({})
+		require'lspconfig'.gdscript.setup{}
 		lsp.setup()
 
 		vim.diagnostic.config({

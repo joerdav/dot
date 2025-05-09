@@ -1,0 +1,15 @@
+configuration {
+    show-icons: true;
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+//@theme "gruvbox-light"
+
+@theme "/home/joerdav/.local/share/rofi/themes/rounded-nord-dark.rasi"

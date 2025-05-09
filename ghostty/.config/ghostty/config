@@ -1,7 +1,7 @@
 font-family = "Monaspace Neon Medium"
 font-size = 12
 
-command = "zsh -c /opt/homebrew/bin/tmux"
+command = "zsh -c tmux"
 
 theme = "kanagawabones"
 background = #000000

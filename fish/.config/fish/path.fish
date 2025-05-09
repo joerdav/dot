@@ -18,6 +18,7 @@ fish_add_path \
  "/usr/local/opt/asdf/bin" \
  "/usr/local/opt/awscli@1/bin" \
  "$HOME/.local/bin" \
+ "$HOME/.nix-profile/bin" \
  "$HOME/.cargo/bin" 
 
 

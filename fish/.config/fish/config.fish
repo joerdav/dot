@@ -10,6 +10,7 @@ export FZF_DEFAULT_OPTS='
 export CLICOLOR=1
 export GPG_TTY=$(tty)
 export GPG_TTY
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 set fish_greeting
 
