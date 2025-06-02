@@ -44,5 +44,42 @@ function fish_prompt
         set stat (set_color normal)"[$last_status]"
     end
 
-    string join '' --   $stat "[$(prompt_pwd)]" (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/') "\$ "
+    set -l j (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[\1\]/')
+    if jj root --quiet &>/dev/null
+        set j (jj log --ignore-working-copy --no-graph --color never -r @ -n1 -T '
+        surround(
+            "[",
+            "]",
+            separate(" ",
+                bookmarks.map(|x| if(
+                    x.name().substr(0, 10).starts_with(x.name()),
+                    x.name().substr(0, 10),
+                    x.name().substr(0, 9) ++ "…")
+                ).join(" "),
+                surround("\"","\"",
+                    if(
+                        description.first_line().substr(0, 24).starts_with(description.first_line()),
+                        description.first_line().substr(0, 24),
+                        description.first_line().substr(0, 23) ++ "…"
+                    )
+                ),
+                change_id.shortest(),
+                commit_id.shortest(),
+                coalesce(
+                if(empty, "empty"),
+                    separate(" ",
+                        diff.files().len() ++ "m",
+                        diff.stat().total_added() ++ "+",
+                        diff.stat().total_removed() ++ "-",
+                    )
+                ),
+                if(conflict, "conflict"),
+                if(divergent, "divergent"),
+                if(hidden, "hidden"),
+            )
+        )
+    ')
+    end
+
+    string join '' --   $stat "[$(prompt_pwd)]" $j  "\$ "
 end

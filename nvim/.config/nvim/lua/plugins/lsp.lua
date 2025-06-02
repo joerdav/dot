@@ -205,7 +205,7 @@ return {
 				end,
 				["gopls"] = function()
 					require("lspconfig").gopls.setup({
-						cmd = { "gopls", "-remote=:37374" },
+						cmd = { "gopls" },
 						filetypes = { "go" },
 						settings = {
 						},
@@ -246,7 +246,6 @@ return {
 			cmd = {
 				"/Users/josephdavidson/.asdf/installs/golang/1.24.0/packages/bin/templ",
 				"lsp",
-				"-gopls-remote=:37374",
 				"-log=/Users/josephdavidson/templ.log",
 				"-goplsLog=/Users/josephdavidson/tgo.log",
 			},
