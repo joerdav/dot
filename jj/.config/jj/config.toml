@@ -1,8 +1,8 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
 [user]
-name = "joeaviva"
-email = "joseph.davidson@aviva.com"
+name = "joerdav"
+email = "joe.davidson.21111@gmail.com"
 
 [ui]
 editor = "nvim"

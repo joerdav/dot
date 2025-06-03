@@ -1,0 +1,4 @@
+--when.repositories = ["~/src/aviva"]
+[user]
+name = "joeaviva"
+email = "joseph.davidson@aviva.com"
