@@ -8,11 +8,6 @@ email = "joe.davidson.21111@gmail.com"
 editor = "nvim"
 default-command = "log"
 
-[signing]
-behavior = "own"
-backend = "gpg"
-key = "25649B006C9E2723C8633960B8343820E7426131"
-
 [aliases]
 # tug: bring nearest bookmark up to recent commit
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
