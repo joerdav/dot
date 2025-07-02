@@ -35,5 +35,20 @@ return {
 
 		require("telescope").load_extension("xc")
 		vim.keymap.set("n", "<leader>xc", require("telescope").extensions["xc"].run_task, { desc = "[X][C] Tasks" })
+		require("telescope").setup({
+			defaults = {
+				file_ignore_patterns = {
+					'node%_modules',
+					'%_cache',
+					'%.git/',
+					'site%_libs',
+					'%.venv/',
+					'%_files/libs/',
+					'%.obsidian/',
+					'%.quarto/',
+					'%_freeze/',
+				},
+			},
+		})
 	end,
 }

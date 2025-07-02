@@ -246,6 +246,7 @@ return {
 			cmd = {
 				"/Users/josephdavidson/.asdf/installs/golang/1.24.0/packages/bin/templ",
 				"lsp",
+				"-no-preload",
 				"-log=/Users/josephdavidson/templ.log",
 				"-goplsLog=/Users/josephdavidson/tgo.log",
 			},

@@ -2,3 +2,9 @@
 [user]
 name = "joeaviva"
 email = "joseph.davidson@aviva.com"
+
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "25649B006C9E2723C8633960B8343820E7426131"
+
