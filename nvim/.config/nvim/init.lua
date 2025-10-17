@@ -108,7 +108,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
 -- lsp
 vim.lsp.enable("gopls")
 vim.lsp.enable("templ")
@@ -134,3 +133,13 @@ vim.diagnostic.config({
 })
 
 
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  defaults = {
+	  lazy = true,
+  },
+})
+vim.o.background = "light" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])

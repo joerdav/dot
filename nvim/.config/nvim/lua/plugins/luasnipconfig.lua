@@ -2,6 +2,7 @@ return {
 	"L3MON4D3/LuaSnip",
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	version = "v2.*",
+	event = "BufReadPre",
 	config = function()
 		local ls = require("luasnip")
 		local types = require("luasnip.util.types")

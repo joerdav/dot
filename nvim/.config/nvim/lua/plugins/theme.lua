@@ -1,31 +1,50 @@
 return {
-	{
-		"rebelot/kanagawa.nvim",
-		config = function()
-			require("kanagawa").setup({
-				colors = {
-					theme = {
-						all = {
-							ui = {
-								bg = "#000000",
-								bg_gutter = "#000000",
-							},
-						},
-					},
-				},
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, opts = {},
+		config = function ()
+			local fg = {fg = "#3c3836"}
+			require("gruvbox").setup({
+			    overrides = {
+				-- monochrome
+				Identifier = fg,
+				Statement = fg,
+				Conditional = fg,
+				Repeat = fg,
+				Label = fg,
+				Exception = fg,
+				Operator = fg,
+				Keyword = fg,
+				Function = fg,
+				PreProc =  fg,
+				Include =  fg,
+				Define =  fg,
+				Macro =  fg,
+				PreCondit = fg,
+				Constant = fg,
+				Character = fg,
+				String =  fg,
+				Boolean = fg,
+				Number = fg,
+				Float = fg,
+				Type = fg,
+				StorageClass = fg,
+				Structure = fg,
+				Typedef = fg,
+				Delimiter = fg,
+				Special = fg,
+				["@keyword.operator.tsx"] = fg,
+			    }
 			})
-			vim.cmd("colorscheme kanagawa-wave")
 		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "rebelot/kanagawa.nvim" },
+		event = "VimEnter",
 		config = function()
 			require("lualine").setup({
 				options = {
 					component_separators = { left = "|", right = "|" },
 					section_separators = { left = "", right = "" },
-					theme = "kanagawa",
+					theme = "gruvbox",
 				},
 				extensions = { "man", "fugitive" },
 				sections = {
@@ -49,6 +68,7 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		config = function()
 			local parser_install_dir = vim.fn.expand("~/treesitters")
 			vim.fn.mkdir(parser_install_dir, "p")

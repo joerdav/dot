@@ -1,6 +1,17 @@
 return {
 	"stevearc/conform.nvim",
-	event = "VeryLazy",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
+	keys = {
+		{
+			"<leader>f",
+			function()
+				require("conform").format({ async = true })
+			end,
+			mode = "",
+			desc = "Format buffer",
+		},
+	},
 	config = function()
 		local conform = require("conform")
 		local js = { "prettierd", "eslint_d" }
@@ -56,6 +67,5 @@ return {
 		end, {
 			desc = "Re-enable autoformat-on-save",
 		})
-		vim.keymap.set("n", "<leader>f", conform.format)
 	end,
 }

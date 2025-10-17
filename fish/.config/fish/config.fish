@@ -3,10 +3,7 @@ ssh-add ~/.ssh/github_rsa &>/dev/null
 
 export ASDF_GOLANG_MOD_VERSION_ENABLED=false
 export FZF_DEFAULT_OPTS='
- --color=fg:#ffffff,bg:#000000,hl:#ffffff
- --color=fg+:#ffffff,bg+:#000000,hl+:#ffffff
- --color=info:#ffffff,prompt:#ffffff,pointer:#ffffff
- --color=marker:#ffffff,spinner:#ffffff,header:#ffffff'
+ --no-color'
 export CLICOLOR=1
 export GPG_TTY=$(tty)
 export GPG_TTY
@@ -17,6 +14,7 @@ set fish_greeting
 source ~/.config/fish/alias.fish
 
 bind \cf "exec 'tmux-sessionizer'"
+source ~/.config/fish/path.fish
 
 if test -z $ASDF_DATA_DIR
     set _asdf_shims "$HOME/.asdf/shims"
@@ -30,7 +28,10 @@ set --erase _asdf_shims
 
 set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
 
-source ~/.config/fish/path.fish
+if test -e ~/.env
+    envsource ~/.env
+end
+
 
 set --erase pure_symbol_git_stash
 

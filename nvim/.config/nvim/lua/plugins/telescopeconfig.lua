@@ -1,5 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	lazy = false,
 	dependencies = {
 		{ "joerdav/telescope-xc.nvim" },
 		"nvim-lua/plenary.nvim",

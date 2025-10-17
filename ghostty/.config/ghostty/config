@@ -3,9 +3,4 @@ font-size = 12
 
 command = "fish -c tmux"
 
-theme = "kanagawabones"
-background = #000000
-foreground = #ffffff
-
-palette = 0=#000000
-palette = 15=#ffffff
+theme = "GruvBoxLight"

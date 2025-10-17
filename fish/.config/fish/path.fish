@@ -4,6 +4,8 @@ fish_add_path \
  "/usr/local/bin" \
  "/bin" \
  "/usr/bin" \
+ "$HOME/.asdf/shims/" \
+ "/usr/local/opt/asdf/bin" \
  "/opt/homebrew/bin" \
  "/opt/homebrew/sbin" \
  "/snap/bin" \
@@ -14,8 +16,6 @@ fish_add_path \
  "/sbin" \
  "/usr/sbin" \
  "/usr/local/sbin" \
- "/usr/local/opt/asdf/shims" \
- "/usr/local/opt/asdf/bin" \
  "/usr/local/opt/awscli@1/bin" \
  "$HOME/.local/bin" \
  "$HOME/.nix-profile/bin" \
