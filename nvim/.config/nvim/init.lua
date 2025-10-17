@@ -109,3 +109,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+-- lsp
+vim.lsp.enable("gopls")
+vim.lsp.enable("templ")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("nvim-lua")
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local opts = {buffer = ev.buf}
+    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', opts)
+    vim.keymap.set({'i', 'n'}, '<C-s>', '<cmd>lua vim.lsp.buf.signature_help({border = "rounded"})<cr>', opts)
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client:supports_method('textDocument/completion') then
+      local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      client.server_capabilities.completionProvider.triggerCharacters = chars
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+  end,
+})
+vim.diagnostic.config({
+  virtual_text = { current_line = true }
+})
+
+
