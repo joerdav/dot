@@ -2,7 +2,7 @@ alias v nvim
 alias vim nvim
 alias gvim="nvim --listen /tmp/godot.pipe"
 
-function review
+function reviewvim
     if not git status -s
             echo 'must start with clean tree!'
             return 1

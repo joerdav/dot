@@ -82,3 +82,9 @@ function fish_prompt
 
     string join '' --   $stat "[$(prompt_pwd)]" $j  "\$ "
 end
+
+# opencode
+fish_add_path $HOME/.opencode/bin
+
+
+alias assume="source (brew --prefix)/bin/assume.fish"

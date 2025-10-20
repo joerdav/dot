@@ -19,7 +19,8 @@ fish_add_path \
  "/usr/local/opt/awscli@1/bin" \
  "$HOME/.local/bin" \
  "$HOME/.nix-profile/bin" \
- "$HOME/.cargo/bin" 
+ "$HOME/.cargo/bin" \
+ "$HOME/.dotnet/tools" 
 
 
 

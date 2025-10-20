@@ -1,6 +1,10 @@
 return {
   "folke/snacks.nvim",
-  opts =  {},
+  opts =  {
+    input = { enabled = true },
+    select = { enabled = true },
+  },
+  lazy = false,
   keys = {
     { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
   },

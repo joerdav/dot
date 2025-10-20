@@ -31,11 +31,9 @@ return {
 		lazy = false,
 	},
 	{
-		"jiangmiao/auto-pairs",
-		config = function()
-			vim.g.utoPairsMultilineClose = 0
-		end,
-		lazy = false,
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true,
 	},
 	{
 		"mg979/vim-visual-multi",

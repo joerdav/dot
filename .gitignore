@@ -5,3 +5,7 @@ system/.private_function
 **/packer_compiled.lua
 
 **/__pycache__/**
+
+jj/.config/jj/repos/
+fish/.config/fish/conf.d/nix-env.fish
+fish/.config/fish/completions/copilot.fish

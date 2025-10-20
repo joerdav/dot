@@ -37,7 +37,7 @@ return {
 				typescriptreact = js,
 				html = { "prettierd" },
 				css = { "prettierd" },
-				go = { "gofumpt", "goimports" },
+				go = { "gofumpt" },
 				json = { "jq" },
 				elixir = { "mix"  },
 				nix = { "nixpkgs_fmt" },

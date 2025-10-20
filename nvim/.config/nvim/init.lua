@@ -7,7 +7,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.clipboard = "unnamedplus" -- always default to system clipboard
 vim.opt.undofile = true
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "fuzzy", "popup" }
 vim.opt.timeout = true -- turn on timeout
 vim.opt.timeoutlen = 300
 vim.opt.inccommand = "nosplit" -- turn on incremental substitution
@@ -113,6 +113,11 @@ vim.lsp.enable("gopls")
 vim.lsp.enable("templ")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("nvim-lua")
+vim.lsp.enable("ols")
+vim.lsp.enable("clangd")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("csharp")
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local opts = {buffer = ev.buf}
@@ -128,6 +133,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
 vim.diagnostic.config({
   virtual_text = { current_line = true }
 })

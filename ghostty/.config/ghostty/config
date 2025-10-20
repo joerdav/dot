@@ -1,6 +1,6 @@
 font-family = "Monaspace Neon Medium"
 font-size = 12
-
+link-url = true
 command = "fish -c tmux"
 
-theme = "GruvBoxLight"
+theme = "GruvBox Light"
