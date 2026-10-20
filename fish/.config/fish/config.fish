@@ -1,7 +1,3 @@
-eval (ssh-agent -c) &>/dev/null
-ssh-add ~/.ssh/github_rsa &>/dev/null
-
-export ASDF_GOLANG_MOD_VERSION_ENABLED=false
 export FZF_DEFAULT_OPTS='
  --no-color'
 export CLICOLOR=1
@@ -15,18 +11,6 @@ source ~/.config/fish/alias.fish
 
 bind \cf "exec 'tmux-sessionizer'"
 source ~/.config/fish/path.fish
-
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
-
-set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
 
 if test -e ~/.env
     envsource ~/.env
@@ -82,9 +66,3 @@ function fish_prompt
 
     string join '' --   $stat "[$(prompt_pwd)]" $j  "\$ "
 end
-
-# opencode
-fish_add_path $HOME/.opencode/bin
-
-
-alias assume="source (brew --prefix)/bin/assume.fish"

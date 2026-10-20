@@ -1,27 +1,17 @@
 # Prepend new items to path (if directory exists)
 fish_add_path \
  "$GOBIN" \
- "/usr/local/bin" \
- "/bin" \
- "/usr/bin" \
- "$HOME/.asdf/shims/" \
- "/usr/local/opt/asdf/bin" \
  "/opt/homebrew/bin" \
  "/opt/homebrew/sbin" \
- "/snap/bin" \
  "/usr/local/bin" \
- "$DOTFILES_BREW_PREFIX_COREUTILS/libexec/gnubin" \
+ "/usr/local/sbin" \
+ "/usr/bin" \
+ "/bin" \
+ "/usr/sbin" \
+ "/sbin" \
  "$DOTFILES_DIR/bin" \
  "$HOME/bin" \
- "/sbin" \
- "/usr/sbin" \
- "/usr/local/sbin" \
- "/usr/local/opt/awscli@1/bin" \
  "$HOME/.local/bin" \
- "$HOME/.nix-profile/bin" \
+ "$HOME/go/bin" \
  "$HOME/.cargo/bin" \
- "$HOME/.dotnet/tools" 
-
-
-
-
+ "$HOME/.dotnet/tools"

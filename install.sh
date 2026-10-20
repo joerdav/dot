@@ -1,45 +1,24 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
+# Minimal macOS setup for the work laptop. Toolchains are managed by the company.
 
 set -eEuo pipefail
 
-# Get current dir (so run this script from anywhere)
-
-export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
-DOTFILES_DIR="$HOME/.dotfiles"
-DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
-
-# Make utilities available
-
+export DOTFILES_DIR="$HOME/.dotfiles"
 PATH="$DOTFILES_DIR/bin:$PATH"
 
-# Update dotfiles itself first
-
-# Bunch of symlinks
-if [[ $(is-macos) == 0 ]]; then
-    ln -sfv "$DOTFILES_DIR/.config/.Xresources" "$HOME"
-    ln -sfv "$DOTFILES_DIR/.config/.profile" "$HOME"
+if [[ $(is-macos) != 0 ]]; then
+    echo "work branch supports macOS only" >&2
+    exit 1
 fi
-ln -sfv "$DOTFILES_DIR/.config/tmux/.tmux.conf" "$HOME"
-ln -sfv "$DOTFILES_DIR/.config/nvim" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/.config/fish" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/.config/atuin" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/.config/ghostty" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/.config/i3" "$HOME/.config"
-ln -sfv "$DOTFILES_DIR/lang_defaults/.default_npm_packages" "$HOME"
-ln -sfv "$DOTFILES_DIR/lang_defaults/.default-golang-pkgs" "$HOME"
 
-# Package managers & pagkages
-. "$DOTFILES_DIR/install/packages.sh"
-. "$DOTFILES_DIR/install/asdf_install.sh"
-#if [ ! -z "$NEWKEY" ]; then
-    #. "$DOTFILES_DIR/install/autokey-github.sh"
-#else
-    #. "$DOTFILES_DIR/install/pull-ssh-keys.sh"
-#fi
+mkdir -p "$HOME/.config"
+ln -sfv "$DOTFILES_DIR/profile/.profile" "$HOME"
+ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME"
+for d in nvim fish ghostty jj; do
+    ln -sfnv "$DOTFILES_DIR/$d/.config/$d" "$HOME/.config/$d"
+done
 
-#ln -sfv "$DOTFILES_DIR/git/.gitconfig" "$HOME"
-#ln -sfv "$DOTFILES_DIR/git/.githelpers" "$HOME"
+. "$DOTFILES_DIR/install/macos/brew.sh"
+. "$DOTFILES_DIR/install/macos/brew-cask.sh"
 
-# Install extra stuff
-
-PATH="$HOME/.cargo/bin:$PATH"
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update'
